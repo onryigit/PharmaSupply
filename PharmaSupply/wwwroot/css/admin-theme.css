@@ -1,0 +1,21 @@
+/* Admin is intentionally a separate operations workspace, not a storefront clone. */
+.admin-shell{--admin-accent:#635bca;--admin-accent-dark:#5046b8;--admin-ink:#202334;--admin-muted:#7b7f91;background:#f4f3f7;color:var(--admin-ink)}
+.admin-shell .admin-nav{background:linear-gradient(180deg,#191b28 0%,#242235 58%,#30284b 100%);color:#c9c8d5;box-shadow:8px 0 28px rgba(24,22,39,.13)}
+.admin-shell .admin-brand>span{background:linear-gradient(145deg,#8177e8,#635bca);color:#fff;box-shadow:0 8px 22px rgba(99,91,202,.35)}
+.admin-shell .admin-brand small,.admin-shell .admin-nav nav label{color:#8e8aaf}
+.admin-shell .admin-nav nav a{border:1px solid transparent}
+.admin-shell .admin-nav nav a:hover{background:rgba(129,119,232,.14);border-color:rgba(164,157,239,.14);color:#fff}
+.admin-shell .admin-nav nav a:hover .material-symbols-rounded{color:#a49def}
+.admin-shell .admin-user>span{background:#635bca}.admin-shell .admin-user small{color:#9692b0}
+.admin-shell .eyebrow,.admin-shell .back,.admin-shell .card-head a{color:var(--admin-accent)}
+.admin-shell .btn.primary{background:linear-gradient(135deg,var(--admin-accent),var(--admin-accent-dark));box-shadow:0 8px 18px rgba(99,91,202,.18)}
+.admin-shell .btn.primary:hover{box-shadow:0 11px 24px rgba(99,91,202,.28)}
+.admin-shell .admin-card,.admin-shell .stats>div{border-color:#e5e2ea;box-shadow:0 8px 26px rgba(41,37,61,.045)}
+.admin-shell .admin-card{border-radius:12px}.admin-shell .stats>div{border-radius:12px}
+.admin-shell .stat-icon.blue{background:#eeecff;color:#635bca}.admin-shell .stat-icon.green{background:#e6f7f2;color:#13866a}.admin-shell .stat-icon.orange{background:#fff1df;color:#c87117}.admin-shell .stat-icon.purple{background:#f4eafa;color:#8a4ba8}
+.admin-shell th{background:#f9f8fb;color:#828092}.admin-shell th,.admin-shell td{border-color:#ece9ef}
+.admin-shell .status{background:#eeecff;color:#5850bb}.admin-shell .status.delivered{background:#e4f6ef;color:#08765a}.admin-shell .status.cancelled{background:#fce9ec;color:#b63349}
+.admin-shell .actions a{background:#eeecff;color:#5e56c4}.admin-shell .actions button{background:#fcebed;color:#bd3a4e}
+.admin-shell .form-grid input:not([type=checkbox]),.admin-shell .form-grid select,.admin-shell .form-grid textarea,.admin-shell .status-form select{border-color:#dedbe5;background:#fcfbfd}
+.admin-shell .form-grid input:focus,.admin-shell .form-grid select:focus,.admin-shell .form-grid textarea:focus{outline:2px solid rgba(99,91,202,.16);border-color:#8e87dd;background:#fff}
+.admin-shell .notification-count{background:#f0edff;color:#5e55c2}.admin-shell .alert-item>span{color:#b46519}

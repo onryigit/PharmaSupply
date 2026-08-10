@@ -1,0 +1,5 @@
+.header-search{height:42px;width:250px;border:1px solid var(--line);border-radius:11px;display:flex;align-items:center;background:#f8fafc;overflow:hidden;transition:.2s}
+.header-search>span{font-size:20px;color:#8795a8;margin-left:11px}.header-search input{min-width:0;flex:1;border:0;outline:0;background:transparent;padding:0 8px;font-size:11px;color:var(--ink)}
+.header-search button{align-self:stretch;border:0;background:transparent;color:var(--blue);padding:0 11px;font-size:10px;font-weight:800;cursor:pointer}.header-search:focus-within{border-color:#8eb3e5;background:#fff;box-shadow:0 0 0 3px rgba(0,71,171,.08)}
+.catalog-top form{margin:0}.catalog-top p span{color:var(--blue)}
+@media(max-width:760px){.header-search{width:135px}.header-search button{display:none}.cart-link>span:last-child{display:none}.cart-link{padding:0 11px}.header-search input{font-size:10px}}
