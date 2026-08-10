@@ -23,5 +23,5 @@ public sealed class RedPrescriptionQuotaHandler : CheckoutValidationHandler
 public sealed class BalanceValidationHandler : CheckoutValidationHandler
 {
     public override string? Validate(CheckoutRequest request) => request.Total > request.Pharmacy.Balance + request.Pharmacy.CreditLimit
-        ? "Eczane bakiyesi ve kredi limiti yetersiz." : base.Validate(request);
+        ? "Eczane bakiyesi ve kredi limiti yetersiz." : base.Validate(request); 
 }
