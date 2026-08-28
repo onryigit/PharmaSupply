@@ -1,7 +1,86 @@
 @model HomeViewModel
-@{ ViewData["Title"] = "Eczaneniz için akıllı tedarik"; }
-<section class="hero"><div class="container hero-grid"><div><span class="pill"><span></span> Lisanslı B2B Ecza Tedarik Platformu</span><h1>Sağlığın geleceğini<br><em>birlikte tedarik ediyoruz.</em></h1><p>Binlerce medikal ürüne, şeffaf fiyatlara ve güvenli lojistik ağına tek noktadan ulaşın.</p><div class="hero-actions"><a class="btn primary" asp-controller="Shop" asp-action="Index">Ürünleri keşfet <span class="material-symbols-rounded">arrow_forward</span></a><a class="btn ghost" asp-controller="Admin" asp-action="Index">Yönetim paneli</a></div><div class="trust-row"><span><b>4.800+</b> ürün</span><span><b>1.200+</b> eczane</span><span><b>%99,2</b> zamanında teslimat</span></div></div><div class="hero-visual"><div class="orb"></div><span class="material-symbols-rounded main-icon">medical_services</span><div class="float-card"><span class="material-symbols-rounded">verified_user</span><div><b>Güvenli Tedarik</b><small>Soğuk zincir takibi</small></div></div></div></div></section>
-<section class="section container"><div class="section-head"><div><span class="eyebrow">HIZLI ERİŞİM</span><h2>Öne çıkan kategoriler</h2></div><a asp-controller="Shop" asp-action="Index">Tümünü gör <span>→</span></a></div><div class="category-grid">@foreach(var category in Model.Categories){<a class="category-card" asp-controller="Shop" asp-action="Index" asp-route-categoryId="@category.Id"><span class="category-icon material-symbols-rounded">@category.Icon</span><div><b>@category.Name</b><small>Ürünleri incele</small></div><span class="arrow">→</span></a>}</div></section>
-@if(Model.ExpiringSoon.Count > 0){<section class="container expiry-banner"><div><span class="badge white">SINIRLI SÜRE</span><h2>Miadı yaklaşanlarda<br><em>avantajlı fiyatlar</em></h2><p>Stoklarla sınırlı seçili ürünlerde özel eczane indirimi.</p><a class="btn white" asp-controller="Shop" asp-action="Index">Fırsatları incele</a></div><span class="material-symbols-rounded banner-icon">pill</span></section>}
-<section class="section container"><div class="section-head"><div><span class="eyebrow">ECZANELERİN TERCİHİ</span><h2>Çok satan ürünler</h2></div><a asp-controller="Shop" asp-action="Index">Tüm ürünler <span>→</span></a></div><div class="products-grid">@foreach(var item in Model.BestSellers){<partial name="_ProductCard" model="item" />}</div></section>
-<section class="features"><div class="container features-grid"><div><span class="material-symbols-rounded">local_shipping</span><b>Aynı gün sevkiyat</b><small>15:00'a kadar siparişlerde</small></div><div><span class="material-symbols-rounded">ac_unit</span><b>Soğuk zincir güvencesi</b><small>Uçtan uca sıcaklık takibi</small></div><div><span class="material-symbols-rounded">shield</span><b>Lisanslı ürünler</b><small>İTS uyumlu ve izlenebilir</small></div><div><span class="material-symbols-rounded">support_agent</span><b>Uzman desteği</b><small>Eczacınıza özel danışman</small></div></div></section>
+@{
+    ViewData["Title"] = "Eczaneniz için akıllı tedarik";
+}
+
+<section class="hero">
+    <div class="container hero-grid">
+        <div>
+            <span class="pill"><span></span> Lisanslı B2B Ecza Tedarik Platformu</span>
+            <h1>Sağlığın geleceğini<br /><em>birlikte tedarik ediyoruz.</em></h1>
+            <p>Binlerce medikal ürüne, şeffaf fiyatlara ve güvenli lojistik ağına tek noktadan ulaşın.</p>
+            <div class="hero-actions">
+                <a class="btn primary" asp-controller="Shop" asp-action="Index">
+                    Ürünleri keşfet <span class="material-symbols-rounded">arrow_forward</span>
+                </a>
+                <a class="btn ghost" asp-controller="Admin" asp-action="Index">Yönetim paneli</a>
+            </div>
+            <div class="trust-row">
+                <span><b>@Model.ProductCount</b> ürün</span>
+                <span><b>@Model.Categories.Count</b> kategori</span>
+                <span><b>@Model.BestSellers.Count</b> çok satan</span>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="orb"></div>
+            <span class="material-symbols-rounded main-icon">medical_services</span>
+            <div class="float-card">
+                <span class="material-symbols-rounded">verified_user</span>
+                <div><b>Güvenli Tedarik</b><small>Soğuk zincir takibi</small></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section container">
+    <div class="section-head">
+        <div><span class="eyebrow">HIZLI ERİŞİM</span><h2>Öne çıkan kategoriler</h2></div>
+        <a asp-controller="Shop" asp-action="Index">Tümünü gör <span>→</span></a>
+    </div>
+    <div class="category-grid">
+        @foreach (var category in Model.Categories)
+        {
+            <a class="category-card" asp-controller="Shop" asp-action="Index"
+               asp-route-categoryId="@category.Id">
+                <span class="category-icon material-symbols-rounded">@category.Icon</span>
+                <div><b>@category.Name</b><small>Ürünleri incele</small></div>
+                <span class="arrow">→</span>
+            </a>
+        }
+    </div>
+</section>
+
+@if (Model.ExpiringSoon.Count > 0)
+{
+    <section class="container expiry-banner">
+        <div>
+            <span class="badge white">SINIRLI SÜRE</span>
+            <h2>Miadı yaklaşanlarda<br /><em>avantajlı fiyatlar</em></h2>
+            <p>Stoklarla sınırlı seçili ürünlerde özel eczane indirimi.</p>
+            <a class="btn white" asp-controller="Shop" asp-action="Index">Fırsatları incele</a>
+        </div>
+        <span class="material-symbols-rounded banner-icon">pill</span>
+    </section>
+}
+
+<section class="section container">
+    <div class="section-head">
+        <div><span class="eyebrow">ECZANELERİN TERCİHİ</span><h2>Çok satan ürünler</h2></div>
+        <a asp-controller="Shop" asp-action="Index">Tüm ürünler <span>→</span></a>
+    </div>
+    <div class="products-grid">
+        @foreach (var item in Model.BestSellers)
+        {
+            <partial name="_ProductCard" model="item" />
+        }
+    </div>
+</section>
+
+<section class="features">
+    <div class="container features-grid">
+        <div><span class="material-symbols-rounded">local_shipping</span><b>Aynı gün sevkiyat</b><small>15:00'a kadar siparişlerde</small></div>
+        <div><span class="material-symbols-rounded">ac_unit</span><b>Soğuk zincir güvencesi</b><small>Uçtan uca sıcaklık takibi</small></div>
+        <div><span class="material-symbols-rounded">shield</span><b>Lisanslı ürünler</b><small>İTS uyumlu ve izlenebilir</small></div>
+        <div><span class="material-symbols-rounded">support_agent</span><b>Uzman desteği</b><small>Eczacınıza özel danışman</small></div>
+    </div>
+</section>

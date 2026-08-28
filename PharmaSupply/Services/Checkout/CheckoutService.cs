@@ -6,7 +6,10 @@ using PharmaSupply.Services.Pricing;
 
 namespace PharmaSupply.Services.Checkout;
 
-public interface ICheckoutService { Task<CheckoutResult> CheckoutAsync(int pharmacyId, IReadOnlyDictionary<int, int> cart); }
+public interface ICheckoutService
+{
+    Task<CheckoutResult> CheckoutAsync(int pharmacyId, IReadOnlyDictionary<int, int> cart);
+}
 
 public sealed class CheckoutService(
     IUnitOfWork unitOfWork,
@@ -14,7 +17,7 @@ public sealed class CheckoutService(
     LicenseValidationHandler license,
     RedPrescriptionQuotaHandler quota,
     BalanceValidationHandler balance,
-    IStockObserver stockObserver) : ICheckoutService
+    IStockSubject stockSubject) : ICheckoutService
 {
     public async Task<CheckoutResult> CheckoutAsync(int pharmacyId, IReadOnlyDictionary<int, int> cart)
     {
@@ -56,7 +59,7 @@ public sealed class CheckoutService(
             foreach (var line in request.Lines)
             {
                 line.Product.Stock -= line.Quantity;
-                stockObserver.Inspect(line.Product);
+                stockSubject.Notify(line.Product);
             }
             pharmacy.Balance -= request.Total;
             pharmacy.UsedRedPrescriptionQuota += request.RedPrescriptionQuantity;

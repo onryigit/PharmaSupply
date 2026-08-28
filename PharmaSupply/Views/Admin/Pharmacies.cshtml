@@ -1,3 +1,59 @@
 @model IReadOnlyList<Pharmacy>
-@{ ViewData["Title"] = "Eczane Yönetimi"; }
-<div class="admin-shell"><partial name="_AdminNav"/><div class="admin-main"><header class="admin-top"><div><span class="eyebrow">İŞ ORTAKLARI</span><h1>Eczane yönetimi</h1><p>Lisans, bakiye ve kota takibi.</p></div><a class="btn primary" asp-action="PharmacyForm"><span class="material-symbols-rounded">add</span>Yeni eczane</a></header><section class="admin-card"><div class="table-wrap"><table><thead><tr><th>Eczane</th><th>Lisans</th><th>Durum</th><th>Cari bakiye</th><th>Kredi limiti</th><th>Kırmızı reçete kota</th><th></th></tr></thead><tbody>@foreach(var item in Model){<tr><td><b>@item.Name</b></td><td>@item.LicenseNumber</td><td><span class="status @(item.IsLicenseActive ? "delivered" : "cancelled")">@(item.IsLicenseActive ? "Aktif" : "Pasif")</span></td><td>@item.Balance.ToString("N2") ₺</td><td>@item.CreditLimit.ToString("N2") ₺</td><td>@item.UsedRedPrescriptionQuota / @item.MonthlyRedPrescriptionQuota</td><td class="actions"><a asp-action="PharmacyForm" asp-route-id="@item.Id"><span class="material-symbols-rounded">edit</span></a></td></tr>}</tbody></table></div></section></div></div>
+@{
+    ViewData["Title"] = "Eczane Yönetimi";
+}
+
+<div class="admin-shell">
+    <partial name="_AdminNav" />
+    <div class="admin-main">
+        <header class="admin-top">
+            <div>
+                <span class="eyebrow">İŞ ORTAKLARI</span>
+                <h1>Eczane yönetimi</h1>
+                <p>Lisans, bakiye ve kota takibi.</p>
+            </div>
+            <a class="btn primary" asp-action="PharmacyForm">
+                <span class="material-symbols-rounded">add</span>Yeni eczane
+            </a>
+        </header>
+        <section class="admin-card">
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Eczane</th>
+                            <th>Lisans</th>
+                            <th>Durum</th>
+                            <th>Cari bakiye</th>
+                            <th>Kredi limiti</th>
+                            <th>Kırmızı reçete kota</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><b>@item.Name</b></td>
+                                <td>@item.LicenseNumber</td>
+                                <td>
+                                    <span class="status @(item.IsLicenseActive ? "delivered" : "cancelled")">
+                                        @(item.IsLicenseActive ? "Aktif" : "Pasif")
+                                    </span>
+                                </td>
+                                <td>@item.Balance.ToString("N2") ₺</td>
+                                <td>@item.CreditLimit.ToString("N2") ₺</td>
+                                <td>@item.UsedRedPrescriptionQuota / @item.MonthlyRedPrescriptionQuota</td>
+                                <td class="actions">
+                                    <a asp-action="PharmacyForm" asp-route-id="@item.Id">
+                                        <span class="material-symbols-rounded">edit</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

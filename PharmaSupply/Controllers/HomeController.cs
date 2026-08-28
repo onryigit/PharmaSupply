@@ -10,9 +10,22 @@ namespace PharmaSupply.Controllers
     {
         public async Task<IActionResult> Index()
         {
-            var all = await products.GetAllAsync();
-            return View(new HomeViewModel(await products.GetCategoriesAsync(), await products.GetBestSellersAsync(),
-                all.Where(x => x.ExpirationDate <= DateTime.Today.AddMonths(3)).OrderBy(x => x.ExpirationDate).Take(4).ToList()));
+            var allProducts = await products.GetAllAsync();
+            var categories = await products.GetCategoriesAsync();
+            var bestSellers = await products.GetBestSellersAsync();
+            var expiringSoon = allProducts
+                .Where(x => x.ExpirationDate <= DateTime.Today.AddMonths(3))
+                .OrderBy(x => x.ExpirationDate)
+                .Take(4)
+                .ToList();
+
+            var viewModel = new HomeViewModel(
+                categories,
+                bestSellers,
+                expiringSoon,
+                allProducts.Count);
+
+            return View(viewModel);
         }
 
         public IActionResult Privacy()

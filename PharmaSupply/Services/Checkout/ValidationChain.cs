@@ -5,7 +5,13 @@ namespace PharmaSupply.Services.Checkout;
 public abstract class CheckoutValidationHandler
 {
     private CheckoutValidationHandler? _next;
-    public CheckoutValidationHandler SetNext(CheckoutValidationHandler next) { _next = next; return next; }
+
+    public CheckoutValidationHandler SetNext(CheckoutValidationHandler next)
+    {
+        _next = next;
+        return next;
+    }
+
     public virtual string? Validate(CheckoutRequest request) => _next?.Validate(request);
 }
 

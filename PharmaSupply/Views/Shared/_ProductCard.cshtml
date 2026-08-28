@@ -1,5 +1,29 @@
 @model Product
 <article class="product-card">
-    <a asp-controller="Shop" asp-action="Detail" asp-route-id="@Model.Id" class="product-image">@if(Model.ExpirationDate <= DateTime.Today.AddMonths(3)){<span class="badge warning">Miat İndirimi</span>}<img src="@Model.ImageUrl" alt="@Model.Name" loading="lazy" /></a>
-    <div class="product-body"><span class="eyebrow">@Model.Category?.Name · @Model.ActiveIngredient</span><h3><a asp-controller="Shop" asp-action="Detail" asp-route-id="@Model.Id">@Model.Name</a></h3><div class="product-meta"><span class="stock @(Model.Stock < 50 ? "low" : "")">@(Model.Stock > 0 ? $"{Model.Stock} kutu stokta" : "Tükendi")</span><span>@(Model.PrescriptionType == PrescriptionType.Normal ? "Normal" : Model.PrescriptionType == PrescriptionType.Red ? "Kırmızı" : "Yeşil") reçete</span></div><div class="product-bottom"><strong>@Model.UnitPrice.ToString("N2") ₺</strong><form asp-controller="Cart" asp-action="Add" method="post"><input type="hidden" name="productId" value="@Model.Id"/><button class="icon-button" aria-label="Sepete ekle" disabled="@(Model.Stock == 0)"><span class="material-symbols-rounded">add_shopping_cart</span></button></form></div></div>
+    <a asp-controller="Shop" asp-action="Detail" asp-route-id="@Model.Id" class="product-image">
+        @if (Model.ExpirationDate <= DateTime.Today.AddMonths(3))
+        {
+            <span class="badge warning">Miat İndirimi</span>
+        }
+        <img src="@Model.ImageUrl" alt="@Model.Name" loading="lazy" />
+    </a>
+    <div class="product-body">
+        <span class="eyebrow">@Model.Category?.Name · @Model.ActiveIngredient</span>
+        <h3><a asp-controller="Shop" asp-action="Detail" asp-route-id="@Model.Id">@Model.Name</a></h3>
+        <div class="product-meta">
+            <span class="stock @(Model.Stock < 50 ? "low" : "")">
+                @(Model.Stock > 0 ? $"{Model.Stock} kutu stokta" : "Tükendi")
+            </span>
+            <span>@(Model.PrescriptionType == PrescriptionType.Normal ? "Normal" : Model.PrescriptionType == PrescriptionType.Red ? "Kırmızı" : "Yeşil") reçete</span>
+        </div>
+        <div class="product-bottom">
+            <strong>@Model.UnitPrice.ToString("N2") ₺</strong>
+            <form asp-controller="Cart" asp-action="Add" method="post">
+                <input type="hidden" name="productId" value="@Model.Id" />
+                <button class="icon-button" aria-label="Sepete ekle" disabled="@(Model.Stock == 0)">
+                    <span class="material-symbols-rounded">add_shopping_cart</span>
+                </button>
+            </form>
+        </div>
+    </div>
 </article>

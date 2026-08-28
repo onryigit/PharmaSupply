@@ -35,18 +35,37 @@ public sealed class ProductService(AppDbContext db) : IProductService
     }
 
     public async Task<IReadOnlyList<Product>> GetBestSellersAsync() => await db.Products.AsNoTracking()
-        .Include(x => x.Category).Where(x => x.IsBestSeller).Take(8).ToListAsync();
+        .Include(x => x.Category)
+        .Where(x => x.IsBestSeller)
+        .OrderBy(x => x.Name)
+        .Take(8)
+        .ToListAsync();
     public Task<Product?> GetByIdAsync(int id) => db.Products.AsNoTracking().Include(x => x.Category)
         .FirstOrDefaultAsync(x => x.Id == id);
     public async Task<IReadOnlyList<Category>> GetCategoriesAsync() => await db.Categories.AsNoTracking().ToListAsync();
     public async Task<IReadOnlyList<string>> GetIngredientsAsync() => await db.Products.AsNoTracking()
         .Select(x => x.ActiveIngredient).Distinct().OrderBy(x => x).ToListAsync();
-    public async Task AddAsync(Product product) { db.Add(product); await db.SaveChangesAsync(); }
-    public async Task UpdateAsync(Product product) { db.Update(product); await db.SaveChangesAsync(); }
+    public async Task AddAsync(Product product)
+    {
+        db.Add(product);
+        await db.SaveChangesAsync();
+    }
+
+    public async Task UpdateAsync(Product product)
+    {
+        db.Update(product);
+        await db.SaveChangesAsync();
+    }
+
     public async Task DeleteAsync(int id)
     {
         var product = await db.Products.FindAsync(id);
-        if (product is null) return;
-        db.Remove(product); await db.SaveChangesAsync();
+        if (product is null)
+        {
+            return;
+        }
+
+        db.Remove(product);
+        await db.SaveChangesAsync();
     }
 }

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewData["Title"] · PharmaSupply</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Rounded" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/pages.css" asp-append-version="true" />
@@ -11,14 +13,53 @@
     <link rel="stylesheet" href="~/css/search.css" asp-append-version="true" />
 </head>
 <body>
-    <div class="topbar"><div class="container"><span>Türkiye'nin güvenilir medikal tedarik ağı</span><span>0850 340 00 34 · Hafta içi 08:30–18:30</span></div></div>
-    <header class="site-header"><div class="container nav-wrap">
-        <a class="brand" asp-controller="Home" asp-action="Index"><span class="brand-mark">+</span><span>Pharma<b>Supply</b><small>Medikal Lojistik</small></span></a>
-        <nav><a asp-controller="Home" asp-action="Index">Ana Sayfa</a><a asp-controller="Shop" asp-action="Index">Ürünler</a><a asp-controller="Admin" asp-action="Index">Yönetim</a></nav>
-        <div class="nav-actions"><form class="header-search" asp-controller="Shop" asp-action="Index" method="get"><span class="material-symbols-rounded">search</span><input type="search" name="q" value="@Context.Request.Query["q"]" placeholder="İlaç veya etken madde ara" aria-label="İlaç ara"/><button type="submit" aria-label="Ara">Ara</button></form><a class="cart-link" asp-controller="Cart" asp-action="Index"><span class="material-symbols-rounded">shopping_bag</span><span>Sepetim</span></a></div>
-    </div></header>
-    @if(TempData["Success"] is string success){<div class="toast success">@success</div>} @if(TempData["Error"] is string error){<div class="toast error">@error</div>}
+    <div class="topbar">
+        <div class="container">
+            <span>Türkiye'nin güvenilir medikal tedarik ağı</span>
+            <span>0850 340 00 34 · Hafta içi 08:30–18:30</span>
+        </div>
+    </div>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a class="brand" asp-controller="Home" asp-action="Index">
+                <span class="brand-mark">+</span>
+                <span>Pharma<b>Supply</b><small>Medikal Lojistik</small></span>
+            </a>
+            <nav>
+                <a asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+                <a asp-controller="Shop" asp-action="Index">Ürünler</a>
+                <a asp-controller="Admin" asp-action="Index">Yönetim</a>
+            </nav>
+            <div class="nav-actions">
+                <form class="header-search" asp-controller="Shop" asp-action="Index" method="get">
+                    <span class="material-symbols-rounded">search</span>
+                    <input type="search" name="q" value="@Context.Request.Query["q"]"
+                           placeholder="İlaç veya etken madde ara" aria-label="İlaç ara" />
+                    <button type="submit" aria-label="Ara">Ara</button>
+                </form>
+                <a class="cart-link" asp-controller="Cart" asp-action="Index">
+                    <span class="material-symbols-rounded">shopping_bag</span><span>Sepetim</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    @if (TempData["Success"] is string success)
+    {
+        <div class="toast success">@success</div>
+    }
+    @if (TempData["Error"] is string error)
+    {
+        <div class="toast error">@error</div>
+    }
     <main>@RenderBody()</main>
-    <footer><div class="container footer-grid"><div class="brand light"><span class="brand-mark">+</span><span>Pharma<b>Supply</b></span></div><p>Sağlık profesyonelleri için güvenli, hızlı ve izlenebilir tedarik.</p><span>© 2026 PharmaSupply</span></div></footer>
-    <script src="~/js/site.js" asp-append-version="true"></script>@await RenderSectionAsync("Scripts", required: false)
-</body></html>
+    <footer>
+        <div class="container footer-grid">
+            <div class="brand light"><span class="brand-mark">+</span><span>Pharma<b>Supply</b></span></div>
+            <p>Sağlık profesyonelleri için güvenli, hızlı ve izlenebilir tedarik.</p>
+            <span>© @DateTime.Today.Year PharmaSupply</span>
+        </div>
+    </footer>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -23,6 +23,7 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<ICheckoutService, CheckoutService>();
 builder.Services.AddScoped<IStockObserver, AdminStockObserver>();
+builder.Services.AddScoped<IStockSubject, StockSubject>();
 builder.Services.AddScoped<PricingStrategyFactory>();
 builder.Services.AddScoped<LicenseValidationHandler>();
 builder.Services.AddScoped<RedPrescriptionQuotaHandler>();

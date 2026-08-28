@@ -1,5 +1,69 @@
 @model CartViewModel
-@{ ViewData["Title"] = "Sepetim"; }
-<section class="page-heading compact"><div class="container"><span class="eyebrow">SİPARİŞİNİZ</span><h1>Sepetim</h1></div></section>
-<div class="container cart-layout"><section class="cart-panel"><div class="panel-head"><h2>Sepet ürünleri</h2><span>@Model.Lines.Sum(x => x.Quantity) kutu</span></div>@if(Model.Lines.Count == 0){<div class="empty"><span class="material-symbols-rounded">shopping_cart</span><h3>Sepetiniz henüz boş</h3><a class="btn primary" asp-controller="Shop" asp-action="Index">Alışverişe başla</a></div>}@foreach(var line in Model.Lines){<div class="cart-line"><img src="@line.ImageUrl" alt="@line.Name"/><div class="cart-name"><b>@line.Name</b><small>@line.Stock kutu stokta</small></div><form asp-action="Update" method="post" class="qty"><input type="hidden" name="productId" value="@line.ProductId"/><button name="quantity" value="@(line.Quantity - 1)">−</button><span>@line.Quantity</span><button name="quantity" value="@(line.Quantity + 1)">+</button></form><div class="line-price"><b>@line.Total.ToString("N2") ₺</b><small>@line.UnitPrice.ToString("N2") ₺ / kutu</small></div></div>}</section>
-<aside class="summary"><div class="pharmacy-card"><span class="material-symbols-rounded">storefront</span><div><small>Sipariş veren eczane</small><b>@Model.Pharmacy.Name</b><span>@Model.Pharmacy.LicenseNumber</span></div><i class="material-symbols-rounded">verified</i></div><h3>Sipariş özeti</h3><div class="sum-row"><span>Ara toplam</span><b>@Model.Total.ToString("N2") ₺</b></div><div class="sum-row"><span>Fiyatlandırma</span><em>Checkout'ta hesaplanır</em></div><hr/><div class="sum-row total"><span>Tahmini toplam</span><b>@Model.Total.ToString("N2") ₺</b></div><div class="balance-box"><span><small>Cari bakiye</small><b>@Model.Pharmacy.Balance.ToString("N2") ₺</b></span><span><small>Kredi limiti</small><b>@Model.Pharmacy.CreditLimit.ToString("N2") ₺</b></span></div><form asp-action="Checkout" method="post"><button class="btn success full" disabled="@(Model.Lines.Count == 0)">Siparişi tamamla <span class="material-symbols-rounded">arrow_forward</span></button></form><p class="secure"><span class="material-symbols-rounded">lock</span>256-bit güvenli işlem</p></aside></div>
+@{
+    ViewData["Title"] = "Sepetim";
+}
+
+<section class="page-heading compact">
+    <div class="container"><span class="eyebrow">SİPARİŞİNİZ</span><h1>Sepetim</h1></div>
+</section>
+
+<div class="container cart-layout">
+    <section class="cart-panel">
+        <div class="panel-head">
+            <h2>Sepet ürünleri</h2>
+            <span>@Model.Lines.Sum(x => x.Quantity) kutu</span>
+        </div>
+        @if (Model.Lines.Count == 0)
+        {
+            <div class="empty">
+                <span class="material-symbols-rounded">shopping_cart</span>
+                <h3>Sepetiniz henüz boş</h3>
+                <a class="btn primary" asp-controller="Shop" asp-action="Index">Alışverişe başla</a>
+            </div>
+        }
+        @foreach (var line in Model.Lines)
+        {
+            <div class="cart-line">
+                <img src="@line.ImageUrl" alt="@line.Name" />
+                <div class="cart-name"><b>@line.Name</b><small>@line.Stock kutu stokta</small></div>
+                <form asp-action="Update" method="post" class="qty">
+                    <input type="hidden" name="productId" value="@line.ProductId" />
+                    <button name="quantity" value="@(line.Quantity - 1)">−</button>
+                    <span>@line.Quantity</span>
+                    <button name="quantity" value="@(line.Quantity + 1)">+</button>
+                </form>
+                <div class="line-price">
+                    <b>@line.Total.ToString("N2") ₺</b>
+                    <small>@line.UnitPrice.ToString("N2") ₺ / kutu</small>
+                </div>
+            </div>
+        }
+    </section>
+
+    <aside class="summary">
+        <div class="pharmacy-card">
+            <span class="material-symbols-rounded">storefront</span>
+            <div>
+                <small>Sipariş veren eczane</small>
+                <b>@Model.Pharmacy.Name</b>
+                <span>@Model.Pharmacy.LicenseNumber</span>
+            </div>
+            <i class="material-symbols-rounded">verified</i>
+        </div>
+        <h3>Sipariş özeti</h3>
+        <div class="sum-row"><span>Ara toplam</span><b>@Model.Total.ToString("N2") ₺</b></div>
+        <div class="sum-row"><span>Fiyatlandırma</span><em>Checkout'ta hesaplanır</em></div>
+        <hr />
+        <div class="sum-row total"><span>Tahmini toplam</span><b>@Model.Total.ToString("N2") ₺</b></div>
+        <div class="balance-box">
+            <span><small>Cari bakiye</small><b>@Model.Pharmacy.Balance.ToString("N2") ₺</b></span>
+            <span><small>Kredi limiti</small><b>@Model.Pharmacy.CreditLimit.ToString("N2") ₺</b></span>
+        </div>
+        <form asp-action="Checkout" method="post">
+            <button class="btn success full" disabled="@(Model.Lines.Count == 0)">
+                Siparişi tamamla <span class="material-symbols-rounded">arrow_forward</span>
+            </button>
+        </form>
+        <p class="secure"><span class="material-symbols-rounded">lock</span>256-bit güvenli işlem</p>
+    </aside>
+</div>

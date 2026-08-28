@@ -12,8 +12,11 @@ public sealed record CartViewModel(IReadOnlyList<CartLine> Lines, Pharmacy Pharm
 {
     public decimal Total => Lines.Sum(x => x.Total);
 }
-public sealed record HomeViewModel(IReadOnlyList<Category> Categories, IReadOnlyList<Product> BestSellers,
-    IReadOnlyList<Product> ExpiringSoon);
+public sealed record HomeViewModel(
+    IReadOnlyList<Category> Categories,
+    IReadOnlyList<Product> BestSellers,
+    IReadOnlyList<Product> ExpiringSoon,
+    int ProductCount);
 public sealed record ShopViewModel(IReadOnlyList<Product> Products, IReadOnlyList<string> Ingredients,
     ProductFilter Filter);
 public sealed record DashboardViewModel(int ProductCount, int PharmacyCount, int OpenOrderCount,

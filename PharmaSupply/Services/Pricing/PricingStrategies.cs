@@ -3,7 +3,10 @@ using PharmaSupply.Data;
 namespace PharmaSupply.Services.Pricing;
 
 public sealed record PriceBreakdown(decimal Subtotal, decimal Discount, decimal Tax, decimal Total);
-public interface IPricingStrategy { PriceBreakdown Calculate(decimal unitPrice, int quantity); }
+public interface IPricingStrategy
+{
+    PriceBreakdown Calculate(decimal unitPrice, int quantity);
+}
 
 public sealed class SgkMedicinePricingStrategy : IPricingStrategy
 {
