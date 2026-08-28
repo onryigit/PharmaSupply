@@ -63,12 +63,27 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
         Stock = stock, PrescriptionType = prescription, Kind = kind, IsBestSeller = bestSeller,
         ExpirationDate = new DateTime(2026, 8, 10).AddDays(expiresInDays),
         Description = $"{name}, eczane ve sağlık kuruluşlarının profesyonel kullanımına sunulan güvenilir üründür.",
-        ImageUrl = categoryId switch
+        ImageUrl = id switch
         {
-            1 => "/images/products/analgesics.png",
-            2 => "/images/products/supplements.png",
-            3 => "/images/products/dermocosmetics.png",
-            _ => "/images/products/medical-supplies.png"
+            1 => "/images/products/paraset-500-mg.png",
+            2 => "/images/products/ibucold-plus.png",
+            3 => "/images/products/omega-3-forte.png",
+            4 => "/images/products/dermacare-krem.png",
+            5 => "/images/products/diazepam-5-mg.png",
+            6 => "/images/products/morfin-ampul.png",
+            7 => "/images/products/naproksen-forte-550-mg.png",
+            8 => "/images/products/migra-relief-250-mg.png",
+            9 => "/images/products/ketoprofen-jel.png",
+            10 => "/images/products/vitamin-d3-1000-iu.png",
+            11 => "/images/products/magnezyum-complex.png",
+            12 => "/images/products/probiyotik-balance.png",
+            13 => "/images/products/urea-repair-losyon.png",
+            14 => "/images/products/sun-protect-spf-50.png",
+            15 => "/images/products/niacinamide-serum.png",
+            16 => "/images/products/dijital-ates-olcer.png",
+            17 => "/images/products/glikoz-test-stribi-50li.png",
+            18 => "/images/products/steril-gaz-kompres-100lu.png",
+            _ => ""
         }
     };
 }
