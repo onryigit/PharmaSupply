@@ -18,4 +18,27 @@
 .admin-shell .actions a{background:#eeecff;color:#5e56c4}.admin-shell .actions button{background:#fcebed;color:#bd3a4e}
 .admin-shell .form-grid input:not([type=checkbox]),.admin-shell .form-grid select,.admin-shell .form-grid textarea,.admin-shell .status-form select{border-color:#dedbe5;background:#fcfbfd}
 .admin-shell .form-grid input:focus,.admin-shell .form-grid select:focus,.admin-shell .form-grid textarea:focus{outline:2px solid rgba(99,91,202,.16);border-color:#8e87dd;background:#fff}
+
+.admin-shell .order-products {
+    display: grid;
+    gap: 6px;
+    min-width: 220px;
+}
+
+.admin-shell .order-product {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.admin-shell .order-product b {
+    color: #242136;
+    font-weight: 600;
+}
+
+.admin-shell .order-product small {
+    color: #777387;
+    white-space: nowrap;
+}
 .admin-shell .notification-count{background:#f0edff;color:#5e55c2}.admin-shell .alert-item>span{color:#b46519}

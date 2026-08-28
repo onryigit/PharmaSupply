@@ -7,7 +7,9 @@ namespace PharmaSupply.Controllers;
 
 public sealed class CartController(IPharmacyService pharmacies, ICartService cartService, ICheckoutService checkout) : Controller
 {
+    // Authentication is not part of this case, so pharmacy 1 is the active demo account.
     private const int CurrentPharmacyId = 1;
+
     public async Task<IActionResult> Index()
     {
         var pharmacy = await pharmacies.GetAsync(CurrentPharmacyId);

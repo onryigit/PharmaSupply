@@ -20,7 +20,7 @@
                         <tr>
                             <th>Sipariş</th>
                             <th>Eczane</th>
-                            <th>Ürün</th>
+                            <th>Ürünler</th>
                             <th>Tutar</th>
                             <th>Tarih</th>
                             <th>Durum</th>
@@ -32,7 +32,17 @@
                             <tr>
                                 <td><b>#PS-@item.Id.ToString("D4")</b></td>
                                 <td>@item.Pharmacy?.Name</td>
-                                <td>@item.Items.Sum(x => x.Quantity) kutu</td>
+                                <td>
+                                    <div class="order-products">
+                                        @foreach (var orderItem in item.Items)
+                                        {
+                                            <div class="order-product">
+                                                <b>@(orderItem.Product?.Name ?? "Silinmiş ürün")</b>
+                                                <small>@orderItem.Quantity kutu</small>
+                                            </div>
+                                        }
+                                    </div>
+                                </td>
                                 <td><b>@item.Total.ToString("N2") ₺</b></td>
                                 <td>@item.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
                                 <td>

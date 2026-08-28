@@ -30,11 +30,37 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
             new Category { Id = 2, Name = "Vitamin & Takviye", Icon = "nutrition" },
             new Category { Id = 3, Name = "Dermokozmetik", Icon = "dermatology" },
             new Category { Id = 4, Name = "Medikal Ürünler", Icon = "health_and_safety" });
-        modelBuilder.Entity<Pharmacy>().HasData(new Pharmacy
-        {
-            Id = 1, Name = "Şifa Eczanesi", LicenseNumber = "ECZ-34001", IsLicenseActive = true,
-            Balance = 12500, CreditLimit = 75000, MonthlyRedPrescriptionQuota = 100
-        });
+        modelBuilder.Entity<Pharmacy>().HasData(
+            new Pharmacy
+            {
+                Id = 1,
+                Name = "Şifa Eczanesi",
+                LicenseNumber = "ECZ-34001",
+                IsLicenseActive = true,
+                Balance = 12500,
+                CreditLimit = 75000,
+                MonthlyRedPrescriptionQuota = 100
+            },
+            new Pharmacy
+            {
+                Id = 2,
+                Name = "Hayat Eczanesi",
+                LicenseNumber = "ECZ-34002",
+                IsLicenseActive = true,
+                Balance = 18500,
+                CreditLimit = 60000,
+                MonthlyRedPrescriptionQuota = 80
+            },
+            new Pharmacy
+            {
+                Id = 3,
+                Name = "Mavi Eczanesi",
+                LicenseNumber = "ECZ-34003",
+                IsLicenseActive = true,
+                Balance = 22000,
+                CreditLimit = 90000,
+                MonthlyRedPrescriptionQuota = 120
+            });
         modelBuilder.Entity<Product>().HasData(
             ProductSeed(1, "Paraset 500 mg", "Parasetamol", 1, 68.50m, 240, PrescriptionType.Normal, ProductKind.SgkMedicine, true, 45),
             ProductSeed(2, "İbucold Plus", "İbuprofen", 1, 124.90m, 42, PrescriptionType.Normal, ProductKind.SgkMedicine, true, 70),
