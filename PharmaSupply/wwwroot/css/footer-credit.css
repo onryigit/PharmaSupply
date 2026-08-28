@@ -1,0 +1,27 @@
+.creator-credit {
+    color: #8eeed0;
+    font-family: "Caveat", cursive;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: .2px;
+    text-shadow: 0 2px 12px rgba(142, 238, 208, .18);
+}
+
+.creator-credit strong {
+    color: #fff;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+@media (max-width: 760px) {
+    .footer-grid {
+        flex-wrap: wrap;
+        gap: 18px 24px;
+    }
+
+    .creator-credit {
+        order: 4;
+        width: 100%;
+        text-align: center;
+    }
+}
