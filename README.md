@@ -190,12 +190,15 @@ Bu projede özellikle aşağıdaki mühendislik konularına odaklanılmıştır:
 - Dinamik ve yönetilebilir Admin Panel verileri
 - Okunabilir, sorumlulukları ayrılmış ve sürdürülebilir kod yapısı
 
-## Proje Kapsamı
+<img width="1904" height="915" alt="x9" src="https://github.com/user-attachments/assets/3a0b1787-de5d-446a-bf9a-bb0b98344cca" />
+<img width="1902" height="913" alt="x8" src="https://github.com/user-attachments/assets/ffa3c984-72f1-4430-afa6-59a33eaafe5d" />
+<img width="1905" height="916" alt="x7" src="https://github.com/user-attachments/assets/a6c71ada-ce2c-4020-b44d-5c7285815ea3" />
+<img width="1902" height="916" alt="x6" src="https://github.com/user-attachments/assets/77b83a8e-cce2-4003-883a-8ec908c35a41" />
+<img width="1904" height="948" alt="x5" src="https://github.com/user-attachments/assets/96b2280a-3939-4fac-b790-93643e66ca68" />
+<img width="1908" height="948" alt="x4" src="https://github.com/user-attachments/assets/d0d656ad-555f-4094-a429-4b866792280f" />
+<img width="1895" height="943" alt="x3" src="https://github.com/user-attachments/assets/ef58b5d9-c5fc-482a-a966-5307f59c156c" />
+<img width="1907" height="940" alt="x2" src="https://github.com/user-attachments/assets/80f49f53-29ec-4c1d-9e34-ab7abf79dd9e" />
+<img width="1902" height="948" alt="x1" src="https://github.com/user-attachments/assets/15416009-3a71-4617-8c05-b8610be0cba5" />
+<img width="1905" height="952" alt="x11" src="https://github.com/user-attachments/assets/fc1f12de-75ff-47f3-bc22-3a6afb5b39df" />
+<img width="1920" height="916" alt="x1111" src="https://github.com/user-attachments/assets/47dd2aa9-2e9c-4c87-8739-cb8405ccb538" />
 
-PharmaSupply bir **Design Patterns case çalışmasıdır**. Authentication ve gerçek kullanıcı oturumu case kapsamına dahil olmadığı için uygulamada Şifa Eczanesi aktif demo hesabı olarak kullanılmaktadır. Diğer eczaneler Admin Panel üzerinden yönetilebilir örnek iş ortaklarıdır.
-
----
-
-<p align="center">
-  Made by <strong>Yiğit Öner</strong>
-</p>
